@@ -12,7 +12,7 @@ button:hover
 
 input
 {
-    width: 80%;
+    width: 100% !important;
 }
 
 .row
@@ -75,7 +75,7 @@ td
 
 #footer
 {
-    position: sticky;
+  position: sticky;
 	bottom: 0;
 	clear: both;
 	width: 100%;
@@ -94,11 +94,13 @@ td
   margin-bottom: 2rem;
   font-weight: 300;
   font-size: 1.5rem;
+  color: #323232;
 }
 
 .card-signin .card-body {
   padding: 2rem;
   background: #eeeeee;
+  color: #323232;
 }
 
 .form-signin {
@@ -181,4 +183,10 @@ td
 .btn:hover
 {
     background: #f7aa00;
+}
+
+
+label
+{
+  color: #CBC5C1;
 }
