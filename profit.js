@@ -18,10 +18,11 @@ function addProfitToTableFunction(profitList) {
     clearInputSearchFunction();
 }
 
-
-function clearFunction() {
+function clearFunction()
+{
     table.clear();
 }
+
 
 
 function searchFunction() {
@@ -59,7 +60,7 @@ function addFunction() {
     var baseLink = "http://localhost:8080/profit/add";
     var nazwaParametr = $('#nowy-przychod-nazwa-input').val();
     var kwotaParametr = $('#nowy-przychod-kwota-input').val();
-    var addFunctionJson = '{"nazwa":"' + nazwaParametr + '","kwota":' + kwotaParametr + '"}';
+    var addFunctionJson = '{"nazwa":"' + nazwaParametr + '","kwota":' + kwotaParametr + '}';
 
     console.log(addFunctionJson);
 
@@ -79,10 +80,10 @@ function addFunction() {
 
 function profitAddedFunction() {
     var clearNazwa = $('#nowy-przychod-nazwa-input');
-    var clearKwota = $('#nowy-przychod-input');
+    var clearKwota = $('#nowy-przychod-kwota-input');
     clearNazwa.val("");
     clearKwota.val("");
-    $('#new-expense-alert').show();
+    $('#new-profit-alert').show();
 }
 
 $('#add-button').click(addFunction);
@@ -95,5 +96,4 @@ $('#new-profit-error-alert-close').click(() => {
 })
 
 $('#search-button').click(searchFunction);
-$('#clear-button').click(clearFunction);
 searchFunction();
