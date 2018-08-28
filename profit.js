@@ -1,12 +1,11 @@
 var table;
 
-// $('#expenses-table').dataTable({
-//     "searching": false
-// });
-
-// $(document).ready(function () {
-//     table = $('#profit-table').DataTable();
-// })
+$(document).ready(function () {
+    table = $('#profit-table').DataTable();
+})
+$('#profit-table').dataTable({
+    "searching": false
+});
 
 function addProfitToTableFunction(profitList) {
     clearFunction();
@@ -18,8 +17,7 @@ function addProfitToTableFunction(profitList) {
     clearInputSearchFunction();
 }
 
-function clearFunction()
-{
+function clearFunction() {
     table.clear();
 }
 
