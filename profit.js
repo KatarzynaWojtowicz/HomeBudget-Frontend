@@ -26,20 +26,15 @@ function clearFunction() {
 function searchFunction() {
     var baseLink = "http://localhost:8080/profit/search";
     var whereParts = [];
-    var nazwaParametr = $('#nowy-przychod-nazwa-input').val();
-    var kwotaParametr = $('#nowy-przychow-kwota-input').val();
+    var nazwaParametr = $('#nazwa-input').val();
 
 
     if (nazwaParametr) {
         whereParts.push("nazwa=" + nazwaParametr);
     }
 
-    if (kwotaParametr) {
-        whereParts.push("kwota=" + kwotaParametr);
-    }
-
     if (whereParts.length > 0) {
-        baseLink += "?" + whereParts.join('&');
+        baseLink += "?" + whereParts;
     }
     console.log(baseLink);
 
@@ -82,6 +77,11 @@ function profitAddedFunction() {
     clearNazwa.val("");
     clearKwota.val("");
     $('#new-profit-alert').show();
+}
+
+function clearInputSearchFunction(){
+    var clearNazwaInput = $('#nazwa-input');
+    clearNazwaInput.val("");
 }
 
 $('#add-button').click(addFunction);
