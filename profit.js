@@ -12,7 +12,7 @@ function addProfitToTableFunction(profitList) {
 
     for (i = 0; i < profitList.length; i++) {
         var profit = profitList[i];
-        table.row.add([profit.nazwa, profit.kwota, 0]).draw();
+        table.row.add([profit.idprofit, profit.nazwa, profit.kwota]).draw();
     }
     clearInputSearchFunction();
 }
