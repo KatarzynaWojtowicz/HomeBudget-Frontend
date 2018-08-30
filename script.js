@@ -20,7 +20,7 @@ function addExpensesToTableFunction(expenseList) {
     
     for (i = 0; i < expenseList.length; i++) {
         var expense = expenseList[i];
-        table.row.add([ expense.nazwa, expense.kategoria, expense.cena, expense.status, 0 ]).draw();
+        table.row.add([ expense.id, expense.nazwa, expense.kategoria, expense.cena, expense.status, 0 ]).draw();
     }
     clearInputSearchFunction();
 }
