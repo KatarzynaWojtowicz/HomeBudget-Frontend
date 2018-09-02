@@ -2,12 +2,13 @@ var table;
 
 
 $('#expenses-table').dataTable( {
-  "searching": false
+  "searching": false,
+  
+  "select": true
 } );
 
 $(document).ready( function () {
     table = $('#expenses-table').DataTable();
-    
 } )
 
 

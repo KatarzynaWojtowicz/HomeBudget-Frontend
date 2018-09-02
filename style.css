@@ -42,9 +42,9 @@ body
 
 th
 {
-align-content: center;
-background-color: #f7f7f7;
-color: #3E3E3B;
+  align-content: center;
+  background-color: #f7f7f7;
+  color: #3E3E3B;
 }
 
 td
@@ -55,6 +55,10 @@ td
     background-color: #CBC5C1;
     color: #323232;
     
+}
+
+tr.selected td {
+  background-color: #f7aa00;
 }
 
 .table:hover
