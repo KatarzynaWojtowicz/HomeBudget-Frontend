@@ -3,9 +3,11 @@ var table;
 $(document).ready(function () {
     table = $('#profit-table').DataTable();
 })
-$('#profit-table').dataTable({
-    "searching": false
-});
+$('#profit-table').dataTable( {
+    "searching": false,
+    
+    "select": true
+  } );
 
 function addProfitToTableFunction(profitList) {
     clearFunction();
