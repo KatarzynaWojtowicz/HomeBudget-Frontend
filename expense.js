@@ -1,15 +1,19 @@
 var table;
 
+$(document).ready(function () {
+    table = $('#expenses-table').DataTable({
+        searching: false,
+        buttons: [
+            {
+                text: 'Reload',
+                action: function (e, dt, node, config) {
+                    alert('halo');
+                }
+            }
+        ]
+    });
 
-$('#expenses-table').dataTable( {
-  "searching": false,
-  
-  "select": true
-} );
-
-$(document).ready( function () {
-    table = $('#expenses-table').DataTable();
-} )
+})
 
 
 function clearFunction() {
@@ -18,11 +22,14 @@ function clearFunction() {
 
 function addExpensesToTableFunction(expenseList) {
     clearFunction();
-    
+
     for (i = 0; i < expenseList.length; i++) {
         var expense = expenseList[i];
-        table.row.add([ expense.id, expense.nazwa, expense.kategoria, expense.cena, expense.status]).draw();
+        table.row.add([expense.id, expense.nazwa, expense.kategoria, expense.cena, expense.status, null]).draw();
     }
+    
+    table.buttons().container()
+        .appendTo($('tbody tr td:last-child', table.table().container()));
     clearInputSearchFunction();
 }
 
@@ -59,14 +66,13 @@ function searchFunction() {
     });
 }
 
-function clearInputSearchFunction(){
+function clearInputSearchFunction() {
     var clearKategoriaInput = $('#kategoria-input');
     var clearNazwaInput = $('#nazwa-input');
     var clearStatusSelect = $('#status-select');
     clearKategoriaInput.val("");
     clearNazwaInput.val("");
     clearStatusSelect.val("");
-    
 }
 
 $('#search-button').click(searchFunction);
