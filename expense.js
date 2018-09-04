@@ -27,7 +27,7 @@ function addExpensesToTableFunction(expenseList) {
         var expense = expenseList[i];
         table.row.add([expense.id, expense.nazwa, expense.kategoria, expense.cena, expense.status, null]).draw();
     }
-    
+
     table.buttons().container()
         .appendTo($('tbody tr td:last-child', table.table().container()));
     clearInputSearchFunction();
@@ -75,6 +75,30 @@ function clearInputSearchFunction() {
     clearStatusSelect.val("");
 }
 
-$('#search-button').click(searchFunction);
-$('#clear-button').click(clearFunction);
-searchFunction();
+
+function removeFunction() {
+    var baseLink = "http://localhost:8080/expense/delete";
+    var idParametr = $('#').val();
+    var whereParts = [];
+
+    if (idParametr) {
+        whereParts.push("/" + idParametr);
+    }
+
+    console.log(baseLink);
+
+    $.ajax({
+        url: baseLink,
+        success: removeExpenseFunction,
+        error: function (e) {
+            console.log(e);
+        }
+    });
+
+    function removeExpenseFunction(){
+        
+    }
+
+    $('#search-button').click(searchFunction);
+    $('#clear-button').click(clearFunction);
+    searchFunction();
