@@ -194,3 +194,8 @@ label
 {
   color: #CBC5C1;
 }
+
+#id-edit
+{
+  pointer-events:none;
+}
