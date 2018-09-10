@@ -21,6 +21,7 @@ function clearFunction() {
 }
 
 function addExpensesToTableFunction(expenseList) {
+    console.log(expenseList);
     clearFunction();
 
     for (i = 0; i < expenseList.length; i++) {
@@ -95,10 +96,7 @@ function removeFunction() {
         }
     });
 
-    function removeExpenseFunction(){
-        
-    }
-
-    $('#search-button').click(searchFunction);
-    $('#clear-button').click(clearFunction);
-    searchFunction();
+}
+$('#search-button').click(searchFunction);
+$('#clear-button').click(clearFunction);
+searchFunction();
