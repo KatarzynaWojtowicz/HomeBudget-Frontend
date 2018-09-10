@@ -5,11 +5,18 @@ $(document).ready(function () {
         searching: false,
         buttons: [
             {
-                text: 'Reload',
+                text: 'Edytuj',
                 action: function (e, dt, node, config) {
                     alert('halo');
                 }
+            },
+            {
+                text: 'Usuń',
+                action:  function (e, dt, node, config) {
+                    alert('halo');
+                }
             }
+
         ]
     });
 
