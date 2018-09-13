@@ -1,20 +1,33 @@
 var table;
 
 $(document).ready(function () {
-    table = $('#profit-table').DataTable();
+    table = $('#profit-table').DataTable({
+        searching: false,
+        buttons: [
+            {
+                text: 'Edytuj',
+                action: function (e, dt, node, config) {
+                    alert('halo');
+                }
+            },
+            {
+                text: 'Usuń',
+                action: function (e, dt, node, config) {
+                    alert('halo');
+                }
+            }
+
+        ]
+    });
+
 })
-$('#profit-table').dataTable( {
-    "searching": false,
-    
-    "select": true
-  } );
 
 function addProfitToTableFunction(profitList) {
     clearFunction();
 
     for (i = 0; i < profitList.length; i++) {
         var profit = profitList[i];
-        table.row.add([profit.idprofit, profit.nazwa, profit.kwota]).draw();
+        table.row.add([profit.idprofit, profit.nazwa, profit.kwota, null]).draw();
     }
     clearInputSearchFunction();
 }
@@ -81,9 +94,29 @@ function profitAddedFunction() {
     $('#new-profit-alert').show();
 }
 
-function clearInputSearchFunction(){
+function clearInputSearchFunction() {
     var clearNazwaInput = $('#nazwa-input');
     clearNazwaInput.val("");
+}
+
+function removeFunction() {
+    var baseLink = "http://localhost:8080/profit/delete";
+    var idParametr = $('#').val();
+    var whereParts = [];
+
+    if (idParametr) {
+        whereParts.push("/" + idParametr);
+    }
+
+    console.log(baseLink);
+
+    $.ajax({
+        url: baseLink,
+        success: removeExpenseFunction,
+        error: function (e) {
+            console.log(e);
+        }
+    });
 }
 
 $('#add-button').click(addFunction);
@@ -96,4 +129,5 @@ $('#new-profit-error-alert-close').click(() => {
 })
 
 $('#search-button').click(searchFunction);
-searchFunction();
+searchFunction()
+
