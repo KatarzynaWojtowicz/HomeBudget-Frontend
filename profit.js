@@ -2,39 +2,28 @@ var table;
 
 $(document).ready(function () {
     table = $('#profit-table').DataTable({
-        searching: false,
+        dom: 'Bfrtip',
         buttons: [
-            {
-                text: 'Edytuj',
-                action: function (e, dt, node, config) {
-                    alert('halo');
-                }
-            },
-            {
-                text: 'Usuń',
-                action: function removeFunction() {
-                    alert('halo');
-                }
-            }
-
+            'copy', 'csv', 'excel', 'pdf',
         ]
     });
-
 })
+
+function clearFunction() {
+    table.clear();
+}
 
 function addProfitToTableFunction(profitList) {
     clearFunction();
 
     for (i = 0; i < profitList.length; i++) {
         var profit = profitList[i];
-        table.row.add([profit.idprofit, profit.nazwa, profit.kwota, null]).draw();
+        table.row.add([profit.idprofit, profit.nazwa, profit.kwota]).draw();
     }
     clearInputSearchFunction();
 }
 
-function clearFunction() {
-    table.clear();
-}
+
 
 
 
