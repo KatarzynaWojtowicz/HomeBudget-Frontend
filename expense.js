@@ -2,24 +2,11 @@ var table;
 
 $(document).ready(function () {
     table = $('#expenses-table').DataTable({
-        searching: false,
+        dom: 'Bfrtip',
         buttons: [
-            {
-                text: 'Edytuj',
-                action: function (e, dt, node, config) {
-                    alert('halo');
-                }
-            },
-            {
-                text: 'Usuń',
-                action:  function (e, dt, node, config) {
-                    alert('halo');
-                }
-            }
-
+            'copy', 'csv', 'excel', 'pdf'
         ]
     });
-
 })
 
 
@@ -33,11 +20,9 @@ function addExpensesToTableFunction(expenseList) {
 
     for (i = 0; i < expenseList.length; i++) {
         var expense = expenseList[i];
-        table.row.add([expense.id, expense.nazwa, expense.kategoria, expense.cena, expense.status, null]).draw();
+        table.row.add([expense.id, expense.nazwa, expense.kategoria, expense.cena, expense.status]).draw();
     }
 
-    table.buttons().container()
-        .appendTo($('tbody tr td:last-child', table.table().container()));
     clearInputSearchFunction();
 }
 

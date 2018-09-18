@@ -12,7 +12,7 @@ $(document).ready(function () {
             },
             {
                 text: 'Usuń',
-                action: function (e, dt, node, config) {
+                action: function removeFunction() {
                     alert('halo');
                 }
             }
@@ -120,6 +120,7 @@ function removeFunction() {
 }
 
 $('#add-button').click(addFunction);
+
 $('#new-profit-alert-close').click(function () {
     $('#new-profit-alert').hide();
 });
