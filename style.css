@@ -25,11 +25,12 @@ body
     background-color: #3a4750;
     color: #bcdbdf;
     align-content: center;
+    text-align: center; 
 }
 
 .table
 {
-    align-content: center;
+    text-align: center;
     border-collapse: collapse;
     width: 800px;
     margin-left: auto;
