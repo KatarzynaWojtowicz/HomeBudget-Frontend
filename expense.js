@@ -4,7 +4,7 @@ $(document).ready(function () {
     table = $('#expenses-table').DataTable({
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf'
+            'copy', 'csv', 'excel', 'pdf',
         ]
     });
 })
