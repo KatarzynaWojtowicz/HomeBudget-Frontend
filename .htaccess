@@ -6,3 +6,10 @@ Deny from all
 
 RewriteEngine on
 RewriteRule edit-expense editExpense.html
+RewriteRule edit-profit editProfit.html
+RewriteRule add-expense addExpense.html
+RewriteRule add-profit addProfit.html
+RewriteRule expense expense.html
+RewriteRule profit profit.html
+RewriteRule register register.html
+RewriteRule signin sigin.html
