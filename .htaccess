@@ -9,7 +9,7 @@ RewriteRule edit-expense editExpense.html
 RewriteRule edit-profit editProfit.html
 RewriteRule add-expense addExpense.html
 RewriteRule add-profit addProfit.html
-RewriteRule expense expense.html
-RewriteRule profit profit.html
-RewriteRule register register.html
-RewriteRule signin sigin.html
+RewriteRule expense-list expense.html
+RewriteRule profit-list profit.html
+RewriteRule register-user register.html
+RewriteRule signin-user sigin.html
