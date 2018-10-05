@@ -199,4 +199,6 @@ label
 #id-edit
 {
   pointer-events:none;
+  color: #666;
+  background: #CCC;
 }
