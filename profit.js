@@ -7,7 +7,7 @@ $(document).ready(function () {
             'copy', 'csv', 'excel', 'pdf',
         ]
     });
-})
+
 
 function clearFunction() {
     table.clear();
@@ -23,6 +23,26 @@ function addProfitToTableFunction(profitList) {
     clearInputSearchFunction();
 }
 
+
+$('#profit-table tbody').on('click', 'tr', function () {
+    if ($(this).hasClass('selected')) {
+        $(this).removeClass('selected');
+    }
+    else {
+        table.$('tr.selected').removeClass('selected');
+        $(this).addClass('selected');
+    }
+});
+
+$('#edit-button').click(function () {
+    var selectedRow = table.rows('.selected').data()[0];
+    if (selectedRow === undefined) {
+        $('#profit-error-alert').show();
+    } else {
+        var id = selectedRow[0];
+        window.location.href = window.location.origin + "/edit-profit?id=" + encodeURIComponent(id);
+    }
+});
 
 
 
@@ -120,4 +140,4 @@ $('#new-profit-error-alert-close').click(() => {
 
 $('#search-button').click(searchFunction);
 searchFunction()
-
+})
