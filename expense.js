@@ -3,6 +3,7 @@ var table;
 
 $(document).ready(function () {
     table = $('#expenses-table').DataTable({
+        searching: false,
         dom: 'Bfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'pdf',

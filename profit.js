@@ -2,6 +2,7 @@ var table;
 
 $(document).ready(function () {
     table = $('#profit-table').DataTable({
+        searching: false,
         dom: 'Bfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'pdf',
