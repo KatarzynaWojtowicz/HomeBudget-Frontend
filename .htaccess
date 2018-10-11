@@ -12,4 +12,4 @@ RewriteRule add-profit addProfit.html
 RewriteRule expense-list expense.html
 RewriteRule profit-list profit.html
 RewriteRule register-user register.html
-RewriteRule signin-user sigin.html
+RewriteRule signin-user signin.html
