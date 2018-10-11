@@ -1,8 +1,9 @@
 function addFunction() {
     var imieParametr = $('#name').val();
     var emailParametr = $('#email').val();
+    var hasloParametr = $('#password').val();
     var baseLink = "http://localhost:8080/user/add";
-    var addFunctionJson = '{"login":"' + imieParametr + '","password":"' + '","email":"' + emailParametr + '"}';
+    var addFunctionJson = '{"login":"' + imieParametr + '","password":"' + hasloParametr + '","email":"' + emailParametr + '"}';
 
 
     $.ajax({
