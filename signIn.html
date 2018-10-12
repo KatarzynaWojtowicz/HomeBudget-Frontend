@@ -66,40 +66,67 @@
                 </nav>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                    <div class="card card-signin my-5">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Zaloguj się</h5>
-                            <form class="form-signin">
-                                <div class="input-group-addon">
-                                    <input type="text" id="inputLogin" class="form-control" placeholder="Login" required autofocus>
-                                    <label>Login</label>
-                                </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="login-alert" style="display: none" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Udało się!</strong> To sukces!
+                    <button id="login-alert-close" type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div id="login-error-alert" style="display: none" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Błąd!</strong> Wystąpił błąd podczas logowania użytkownika. Sprawdź, czy wszystkie pola są poprawnie
+                    wypełnione.
+                    <button id="login-error-alert-close" type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div id="required-fields-error-alert" style="display: none" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Błąd!</strong> Wypełnij wszystkie pola!
+                    <button id="required-fields-error-alert-close" type="button" class="close" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                        <div class="card card-signin my-5">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Zaloguj się</h5>
+                                <form class="form-signin">
+                                    <div class="input-group-addon">
+                                        <input type="text" id="inputLogin" class="form-control" placeholder="Login" required autofocus>
+                                        <label>Login</label>
+                                    </div>
 
-                                <div class="input-group-addon">
-                                    <input type="password " id="inputPassword " class="form-control" placeholder="Hasło" required>
-                                    <label>Hasło</label>
-                                </div>
+                                    <div class="input-group-addon">
+                                        <input type="password " id="inputPassword " class="form-control" placeholder="Hasło" required>
+                                        <label>Hasło</label>
+                                    </div>
 
-                                <div class="custom-control custom-checkbox mb-3 ">
-                                    <input type="checkbox " class="custom-control-input " id="customCheck1 ">
-                                    <label class="custom-control-label " for="customCheck1 ">Zapamiętaj mnie</label>
-                                </div>
-                                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">ZALOGUJ</button>
-                            </form>
+                                    <div class="custom-control custom-checkbox mb-3 ">
+                                        <input type="checkbox " class="custom-control-input " id="customCheck1 ">
+                                        <label class="custom-control-label " for="customCheck1 ">Zapamiętaj mnie</label>
+                                    </div>
+                                    <button class="btn btn-lg btn-primary btn-block text-uppercase" id="signin" type="submit">ZALOGUJ</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row" id="footer">
-                2018 &copy; Katarzyna Wojtowicz
-            </div>
-            <div>
-                <script src="signin.js"></script>
+                <div class="row" id="footer">
+                    2018 &copy; Katarzyna Wojtowicz
+                </div>
+                <div>
+                    <script src="signin.js"></script>
+                </div>
             </div>
         </div>
     </div>
 </body>
-</html>
+
