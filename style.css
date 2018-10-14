@@ -22,8 +22,8 @@ input
 
 body
 {
-    background-color: #3a4750;
-    color: #bcdbdf;
+    background-color: #d6cfcb;
+    color: #565264;
     align-content: center;
     text-align: center; 
 }
@@ -44,7 +44,7 @@ body
 th
 {
   align-content: center;
-  background-color: #f7f7f7;
+  background-color: #ccb7;
   color: #3E3E3B;
 }
 
@@ -193,7 +193,7 @@ tr.selected td {
 
 label
 {
-  color: #CBC5C1;
+  color: #565264;
 }
 
 #id-edit
