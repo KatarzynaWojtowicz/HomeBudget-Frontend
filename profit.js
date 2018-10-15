@@ -120,4 +120,8 @@ $(document).ready(function () {
 
     $('#search-button').click(searchFunction);
     searchFunction()
+
+    $('#profit-error-alert-close').click(() => {
+        $('#profit-error-alert').hide();
+    })
 })
