@@ -28,45 +28,6 @@ body
     text-align: center; 
 }
 
-.table
-{
-    text-align: center;
-    border-collapse: collapse;
-    width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-    margin-bottom: 50px;
-    text-decoration: #bcdbdf;
-    text-decoration-skip-ink: #bcdbdf;
-}
-
-th
-{
-  align-content: center;
-  background-color: #ccb7;
-  color: #3E3E3B;
-}
-
-td
-{
-    border-collapse: collapse;
-    padding: 5px;
-    text-align: center;
-    background-color: #CBC5C1;
-    color: #323232;
-    
-}
-
-tr.selected td {
-  background-color: #f7aa00;
-}
-
-.table:hover
-{
-    border: 4px;
-}
-
 #title
 {
 	font-size: 50px;
