@@ -114,4 +114,8 @@ $(document).ready(function () {
     $('#search-button').click(searchFunction);
     $('#clear-button').click(clearFunction);
     searchFunction();
+
+    $('#expense-error-alert-close').click(function () {
+        $('#expense-error-alert').hide();
+    });
 })
