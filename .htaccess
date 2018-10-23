@@ -5,11 +5,11 @@ Deny from all
 </FilesMatch>
 
 RewriteEngine on
-RewriteRule edit-expense editExpense.html
-RewriteRule edit-profit editProfit.html
-RewriteRule add-expense addExpense.html
-RewriteRule add-profit addProfit.html
-RewriteRule expense-list expense.html
-RewriteRule profit-list profit.html
+RewriteRule ^expense/edit-expense ./expense/editExpense.html
+RewriteRule ^profit/edit-profit ./profit/editProfit.html
+RewriteRule ^expense/add-expense ./expense/addExpense.html
+RewriteRule ^profit/add-profit ./profit/addProfit.html
+RewriteRule ^expense/expense-list ./expense/expense.html
+RewriteRule ^profit/profit-list ./profit/profit.html
 RewriteRule register-user register.html
 RewriteRule signin-user signin.html
