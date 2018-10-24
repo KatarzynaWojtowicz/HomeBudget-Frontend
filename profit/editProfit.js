@@ -30,7 +30,7 @@ function saveFunction() {
         url: baseLink,
         data: saveFunctionJson,
         contentType: "application/json",
-        success: function () { window.location.pathname = "profit.html" },
+        success: function () { window.location.pathname = "profit/profit.html" },
         error: function (e) {
             $('#edit-profit-error-alert').show();
             console.log(e);
