@@ -28,7 +28,9 @@
 
 <body>
     <div id="start-page">
-        <div id="top-text" href="expense.html">HomeBudget</div>
+        <div id="top-text">
+            <a href="/expense/expense.html">HomeBudget</a>
+        </div>
     </div>
     <div class="container">
         <div class="row">
@@ -38,8 +40,6 @@
                         aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <a class="navbar-brand" href="/expense/expense.html">Home Budget</a>
-
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
@@ -201,12 +201,14 @@
                 <button class="btn btn-lg btn-primary btn-block text-uppercase" id="register" type="submit">ZAREJESTRUJ</button>
             </div>
         </div>
-        </form>
-        <div class="row" id="footer">
-            2018 &copy; Katarzyna Wojtowicz
+    </div>
+
+    <div id="footer">
+        <div class="col col-lg-12">
+            <p id="footer-text">2018 &copy; Katarzyna Wojtowicz</p>
         </div>
-        <div>
-            <script src="register.js"></script>
-        </div>
+    </div>
+    <div>
+        <script src="register.js"></script>
     </div>
 </body>

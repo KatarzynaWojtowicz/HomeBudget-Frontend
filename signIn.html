@@ -27,7 +27,9 @@
 
 <body>
     <div id="start-page">
-        <div id="top-text" href="expense.html">HomeBudget</div>
+        <div id="top-text">
+            <a href="/expense/expense.html">HomeBudget</a>
+        </div>
     </div>
     <div class="container">
         <div class="row">
@@ -43,7 +45,7 @@
                                 <a class="nav-link" href="expense/expense.html">Wydatki
                                 </a>
                             </li>
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link" href="/expense/addExpense.html">Dodaj wydatek</a>
                             </li>
                             <li class="nav-item">
@@ -59,7 +61,7 @@
                                     <span class="glyphicon glyphicon-user"></span>Zarejestruj się </a>
                             </li>
                             <li>
-                                <a class="nav-link" href="/signIn.html">
+                                <a class="nav-link  active" href="/signIn.html">
                                     <span class="glyphicon glyphicon-log-in active"></span>Logowanie</a>
                             </li>
                         </ul>
@@ -93,35 +95,34 @@
                     </button>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                        <div class="card card-signin my-5">
-                            <div class="card-body">
-                                <h5 class="card-title text-center">Zaloguj się</h5>
-                                <form class="form-signin">
-                                    <div class="input-group-addon">
-                                        <input type="text" id="inputLogin" class="form-control" placeholder="Login" required autofocus>
-                                        <label>Login</label>
-                                    </div>
-
-                                    <div class="input-group-addon">
-                                        <input type="password " id="inputPassword " class="form-control" placeholder="Hasło" required>
-                                        <label>Hasło</label>
-                                    </div>
-                                    <button class="btn btn-lg btn-primary btn-block text-uppercase" id="signin" type="submit">ZALOGUJ</button>
-                                </form>
+        </div>
+        <!-- <div class="container"> -->
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Zaloguj się</h5>
+                        <form class="form-signin">
+                            <div class="input-group-addon">
+                                <input type="text" id="inputLogin" class="form-control" placeholder="Login" required autofocus>
+                                <label>Login</label>
                             </div>
-                        </div>
+
+                            <div class="input-group-addon">
+                                <input type="password " id="inputPassword " class="form-control" placeholder="Hasło" required>
+                                <label>Hasło</label>
+                            </div>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" id="signin" type="submit">ZALOGUJ</button>
+                        </form>
                     </div>
-                </div>
-                <div class="row" id="footer">
-                    2018 &copy; Katarzyna Wojtowicz
-                </div>
-                <div>
-                    <script src="signIn.js"></script>
                 </div>
             </div>
         </div>
     </div>
+    <div id="footer">
+        <div class="col col-lg-12">
+            <p id="footer-text">2018 &copy; Katarzyna Wojtowicz</p>
+        </div>
+    </div>
+    <script src="signIn.js"></script>
 </body>

@@ -101,9 +101,12 @@ button.close, button.close:hover:not(.disabled) {
 }
 
 #top-text {
+    padding-top: 30px;
+}
+
+#top-text a {
     color: white;
     font-style: oblique;
     font-size: 40px;
     text-decoration: none;
-    padding-top: 30px;
 }
