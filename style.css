@@ -1,64 +1,79 @@
-button
-{
-    width: 80%;
-    margin-bottom: 30px;
-}
-button:hover
-{
-    border: 3px solid #3E3E3B;
-    filter: brightness(100%);
-    cursor: pointer;
-}
-
-input
-{
+input {
     width: 100% !important;
 }
 
-.row
-{
+.row {
     margin-top: 10px;
 }
 
-body
-{
+body {
     background-color: #d6cfcb;
     color: #565264;
     align-content: center;
-    text-align: center; 
+    text-align: center;
 }
 
-#title
-{
-	font-size: 50px;
+#title {
+    font-size: 50px;
     color: #4C586F;
 }
 
-.close
-{
+.close {
     width: 20px;
 }
 
-#footer
-{
-  position: sticky;
-	bottom: 0;
-	clear: both;
-	width: 100%;
-	height: 20px;
-	text-align: center;
-	color: gray;  
+#footer {
+    background-color: #777777;
+    text-align: center;
 }
 
-
-label
-{
-  color: #565264;
+#footer-text {
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    margin-bottom: 0px;
+    margin-top: 20px;
+    color: white;
 }
 
-#id-edit
-{
-  pointer-events:none;
-  color: #666;
-  background: #CCC;
+label {
+    color: #565264;
+}
+
+#id-edit {
+    pointer-events: none;
+    color: #666;
+    background: #CCC;
+}
+
+button {
+    background-color: #f7aa00 !important;
+    background-image: none !important;
+    font-size: 80%;
+    border-radius: 5rem !important;
+    letter-spacing: .1rem;
+    font-weight: inherit;
+    transition: all 0.2s;
+    color: white !important;
+    width: 120px;
+    height: 40px;
+    border: 1px solid #999;
+}
+
+button:hover:not(.disabled) {
+    background-color: #ffcd60 !important;
+    background-image: none !important;
+    border: 1px solid #666;
+}
+
+button.close, button.close:hover:not(.disabled) {
+    background-color: transparent !important;
+    border: 0;
+    padding: 0.5rem 1.25rem !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover, .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: transparent;
+    background: none;
+    border-radius: 1rem;
+    color: #333 !important;
 }
