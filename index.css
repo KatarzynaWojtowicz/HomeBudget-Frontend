@@ -19,6 +19,7 @@
   line-height: 1.5;
   font-size: 2.5rem;
   font-weight: 300;
+  margin-bottom: 30px;
 }
 
 .center-content-in-row-vertically {
@@ -125,4 +126,9 @@
 .box {
   width: 5rem;
   height: 5rem;
+}
+
+#link {
+  color: gold;
+  margin-left: 20px;
 }
