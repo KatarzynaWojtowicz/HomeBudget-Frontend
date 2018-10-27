@@ -132,3 +132,26 @@
   color: gold;
   margin-left: 20px;
 }
+
+#image-panel {
+  background-color:#FFFAFA;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+#text-panel {
+  color: #888888;
+  font-style: italic;
+  text-align: center;
+}
+
+#footer {
+  background-color: #777777;
+  text-align: center;
+}
+
+#footer-text {
+margin-bottom: 1rem;
+margin-top:1rem;
+color: #ffffff;
+}
