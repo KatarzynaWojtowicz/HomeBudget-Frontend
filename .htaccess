@@ -13,3 +13,4 @@ RewriteRule ^expense/expense-list ./expense/expense.html
 RewriteRule ^profit/profit-list ./profit/profit.html
 RewriteRule register-user register.html
 RewriteRule signin-user signin.html
+RewriteRule homebudget index.html
