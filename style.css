@@ -55,7 +55,8 @@ label {
     background: #CCC;
 }
 
-button {
+button:not(.navbar-toggler) {
+    margin-bottom: 50px;
     background-color: #f7aa00 !important;
     background-image: none !important;
     font-size: 80%;
@@ -126,4 +127,63 @@ button.close, button.close:hover:not(.disabled) {
 
 li.active a, .nav-link.active {
     color: gold;
+}
+
+.dataTables_wrapper {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.table {
+    text-align: center;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    text-decoration: #bcdbdf;
+    text-decoration-skip-ink: #bcdbdf;
+}
+
+th {
+    align-content: center;
+    background-color: #FFFAFA;
+    color: #3E3E3B;
+}
+
+td {
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: center;
+    background-color: #FFFAFA;
+    color: #323232;
+}
+
+tr.selected td {
+    background-color: #f7aa00;
+}
+
+.table:hover {
+    border: 4px;
+}
+
+table.dataTable thead th, table.dataTable thead td {
+    border-bottom: 1px solid #888;
+    border-top: none
+}
+
+table.dataTable.no-footer {
+    border-bottom: 1px solid #888;
+    border-top: 1px solid #888;
+}
+
+.navbar-toggler-collapsed, .navbar-toggler {
+    color: white;
+    background-color: #f7aa00;
+    font-size: 1rem;
+    width: 120px;
+    height: 2.5rem;
+    border-radius: 2rem;
+    margin-left: auto;
+    margin-right: auto;
 }
