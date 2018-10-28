@@ -11,7 +11,7 @@ input {
 }
 
 body {
-    background-color: #d6cfcb;
+    background-color: #FFFAFA;
     color: #565264;
     align-content: center;
     text-align: center;
@@ -110,4 +110,20 @@ button.close, button.close:hover:not(.disabled) {
     font-style: oblique;
     font-size: 40px;
     text-decoration: none;
+}
+
+.navbar {
+    background-color: #777777;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    color: #ccc;
+}
+
+li.active a, .nav-link.active {
+    color: gold;
 }
