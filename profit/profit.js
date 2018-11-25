@@ -19,7 +19,7 @@ $(document).ready(function () {
 
         for (i = 0; i < profitList.length; i++) {
             var profit = profitList[i];
-            table.row.add([profit.idprofit, profit.nazwa, profit.kwota]).draw();
+            table.row.add([profit.idprofit, profit.nazwa, profit.kwota, profit.dataPrzychodu]).draw();
         }
         clearInputSearchFunction();
     }
@@ -61,7 +61,6 @@ $(document).ready(function () {
         if (whereParts.length > 0) {
             baseLink += "?" + whereParts;
         }
-        console.log(baseLink);
 
         $.ajax({
             url: baseLink,

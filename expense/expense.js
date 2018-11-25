@@ -43,7 +43,7 @@ $(document).ready(function () {
 
         for (i = 0; i < expenseList.length; i++) {
             var expense = expenseList[i];
-            table.row.add([expense.id, expense.nazwa, expense.kategoria, expense.cena, expense.status]).draw();
+            table.row.add([expense.id, expense.dataWydatku, expense.nazwa, expense.kategoria, expense.cena, expense.status]).draw();
         }
 
         clearInputSearchFunction();
@@ -76,6 +76,7 @@ $(document).ready(function () {
         $.ajax({
             url: baseLink,
             success: addExpensesToTableFunction,
+            xhrFields: { withCredentials: true },
             error: function (e) {
                 console.log(e);
             }

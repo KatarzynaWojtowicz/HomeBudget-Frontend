@@ -1,16 +1,15 @@
 function loginFunction() {
     var loginParametr = $('#inputLogin').val();
     var passwordParametr = $('#inputPassword').val();
-    var baseLink = "http://localhost:8080/signin/user";
-    var loginFunctionJson = '{"userName":"' + loginParametr + '","userPassword":"' + passwordParametr + '"}';
+    var baseLink = "http://localhost:8080/login";
+    var loginFunctionJson = "usernname=" + loginParametr + "&password=" + passwordParametr + "&submit=Login";
     console.log(loginFunctionJson);
-
 
     $.ajax({
         type: "POST",
         url: baseLink,
         data: loginFunctionJson,
-        contentType: "application/json",
+        contentType: "application/x-www-form-urlencoded",
         success: loginUserFunction,
         error: function (e) {
             $('#login-error-alert').show();
@@ -32,11 +31,7 @@ function loginUserFunction() {
 
 
 $('#signin').click(function () {
-    var loginParametr = $('#inputLogin').val();
-    var passwordParametr = $('#inputPassword').val();
-
-    console.log(loginParametr + " " + passwordParametr);
-
+    loginFunction();
 })
 
 
