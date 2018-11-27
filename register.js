@@ -1,15 +1,18 @@
 function addFunction() {
-    var imieParametr = $('#name').val();
-    var emailParametr = $('#email').val();
-    var hasloParametr = $('#password').val();
     var baseLink = "http://localhost:8080/user/add";
-    var addFunctionJson = '{"login":"' + imieParametr + '","password":"' + hasloParametr + '","email":"' + emailParametr + '"}';
-
-
+    var registerObject = {
+        name: $('#name').val(),
+        lastName: $('#lastName').val(),
+        login: $('#login').val(),
+        password: $('#password').val(),
+        email: $('#email').val()
+    };
+    
+    var jsonString = JSON.stringify(registerObject);
     $.ajax({
         type: "POST",
         url: baseLink,
-        data: addFunctionJson,
+        data: jsonString,
         contentType: "application/json",
         success: userAddedFunction,
         error: function (e) {
@@ -22,10 +25,14 @@ function addFunction() {
 
 function userAddedFunction() {
     var clearImie = $('#name');
+    var clearNazwisko = $('#lastName');
+    var clearLogin = $('#login');
     var clearHasloParametr = $('#password');
     var clearPowtorzHasloParametr = $('#password-confirm');
     var clearEmailParametr = $('#email');
     clearImie.val("");
+    clearNazwisko.val("");
+    clearLogin.val("");
     clearHasloParametr.val("");
     clearPowtorzHasloParametr.val("");
     clearEmailParametr.val("");
@@ -34,12 +41,14 @@ function userAddedFunction() {
 
 $('#register').click(function () {
     var imieParametr = $('#name').val();
+    var nazwiskoParametr = $("#lastName").val();
+    var loginParametr = $("#login").val();
     var emailParametr = $('#email').val();
     var hasloParametr = $('#password').val();
     var powtorzHasloParametr = $('#password-confirm').val();
-    console.log(imieParametr + " " + emailParametr + " " + hasloParametr + " " + powtorzHasloParametr);
+    console.log(imieParametr + " " + nazwiskoParametr + " " + loginParametr + " " + emailParametr + " " + hasloParametr + " " + powtorzHasloParametr);
 
-    if (imieParametr && emailParametr && hasloParametr && powtorzHasloParametr) {
+    if (imieParametr && nazwiskoParametr && loginParametr && emailParametr && hasloParametr && powtorzHasloParametr) {
         if (hasloParametr === powtorzHasloParametr) {
             addFunction();
         }
