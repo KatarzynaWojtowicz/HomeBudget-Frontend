@@ -1,7 +1,7 @@
 function loginFunction() {
     var loginParametr = $('#inputLogin').val();
     var passwordParametr = $('#inputPassword').val();
-    var baseLink = "http://localhost:8080/login";
+    var baseLink = "http://localhost:8080/user/login";
     var loginFunctionJson = "usernname=" + loginParametr + "&password=" + passwordParametr + "&submit=Login";
     console.log(loginFunctionJson);
 

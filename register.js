@@ -1,5 +1,5 @@
 function addFunction() {
-    var baseLink = "http://localhost:8080/user/add";
+    var baseLink = "http://localhost:8080/user";
     var registerObject = {
         name: $('#name').val(),
         lastName: $('#lastName').val(),
