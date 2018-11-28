@@ -1,47 +1,42 @@
-var ctx = document.getElementById('myChart').getContext('2d');
-var chart = new Chart(ctx, {
-    type: 'bar',
+function getRandomRGB() {
+    var r = Math.floor((Math.random() * 255));
+    var g = Math.floor((Math.random() * 255));
+    var b = Math.floor((Math.random() * 255));
+    return 'rgba(' + r + ', ' + g + ', ' + b + ', 0.4)'
+}
 
-    // The data for our dataset
-    data: {
-        labels: ["Przychody", "Wydatki", "Różnica"],
-        datasets: [
-            {
-                label: "Styczeń",
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [10000, -7000, 3000],
-            },
-            {
-                label: "Luty",
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [8000, -7500, 500],
-            }
-        ]
-    },
-
-    // Configuration options go here
-    options: {}
+// ajax
+$.ajax({
+    url: "http://localhost:8080/summary/monthly",
+    success: createMonthlySummaryData,
+    xhrFields: { withCredentials: true },
+    error: (e) => console.log(e)
 });
+function createMonthlySummaryData(monhtlySummaryList) {
+    var monthlySummaryData = [];
 
-var ctx = document.getElementById('mySummary').getContext('2d');
-var chart = new Chart(ctx, {
-    type: 'bar',
+    for (var i = 0; i < monhtlySummaryList.length; i++) {
+        var profitValue = parseInt(monhtlySummaryList[i].profits, 10);
+        var expenseValue = parseInt(monhtlySummaryList[i].expenses > 0 ? -monhtlySummaryList[i].expenses : 0, 10);
+        var rgbColor = getRandomRGB();
 
-    // The data for our dataset
-    data: {
-        labels: ["Styczeń", "Luty", "Marzec"],
-        datasets: [
-            {
-                label: "Suma",
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [10000, -7000, 3000],
-            },
-        ]
-    },
+        var summaryObject = {
+            label: monhtlySummaryList[i].monthName,
+            backgroundColor: rgbColor,
+            borderColor: rgbColor,
+            data: [profitValue, expenseValue, profitValue + expenseValue]
+        }
+        monthlySummaryData.push(summaryObject);
+    }
+    monthlySummaryData.sort();
 
-    // Configuration options go here
-    options: {}
-});
+    var monthlySummaryCtx = document.getElementById('monthlySummaryChart').getContext('2d');
+    var monthlySummaryChart = new Chart(monthlySummaryCtx, {
+        type: 'bar',
+        data: {
+            labels: ["Przychody", "Wydatki", "Różnica"],
+            datasets: monthlySummaryData
+        },
+        options: {}
+    });
+}
