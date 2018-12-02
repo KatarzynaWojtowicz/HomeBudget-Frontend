@@ -5,10 +5,12 @@ function getRandomRGB() {
     return 'rgba(' + r + ', ' + g + ', ' + b + ', 0.4)'
 }
 
-// ajax
 $.ajax({
     url: "http://localhost:8080/summary/monthly",
-    success: createMonthlySummaryData,
+    success: function (results) {
+        createMonthlySummaryData(results);
+        createMonthlyComparisonData(results);
+    },
     xhrFields: { withCredentials: true },
     error: (e) => console.log(e)
 });
@@ -28,7 +30,6 @@ function createMonthlySummaryData(monhtlySummaryList) {
         }
         monthlySummaryData.push(summaryObject);
     }
-    monthlySummaryData.sort();
 
     var monthlySummaryCtx = document.getElementById('monthlySummaryChart').getContext('2d');
     var monthlySummaryChart = new Chart(monthlySummaryCtx, {
@@ -40,3 +41,32 @@ function createMonthlySummaryData(monhtlySummaryList) {
         options: {}
     });
 }
+
+function createMonthlyComparisonData(monhtlyComparisonList) {
+    var monthNames = [];
+    var monthValues = [];
+
+    for (var i = 0; i < monhtlyComparisonList.length; i++) {
+        var profitValue = parseInt(monhtlyComparisonList[i].profits, 10);
+        var expenseValue = parseInt(monhtlyComparisonList[i].expenses > 0 ? -monhtlyComparisonList[i].expenses : 0, 10);
+
+        monthNames.push(monhtlyComparisonList[i].monthName);
+        monthValues.push(profitValue + expenseValue);
+    }
+
+    var datasetObject = {
+        label: "Bilans miesiąca",
+        data: monthValues
+    }
+
+    var monthlyComparisonCtx = document.getElementById('monthlyComparisonChart').getContext('2d');
+    var monthlyComparisonChart = new Chart(monthlyComparisonCtx, {
+        type: 'line',
+        data: {
+            labels: monthNames,
+            datasets: [datasetObject]
+        },
+        options: {}
+    });
+}
+
