@@ -65,6 +65,7 @@ $(document).ready(function () {
         $.ajax({
             url: baseLink,
             success: addProfitToTableFunction,
+            xhrFields: { withCredentials: true },
             error: function (e) {
                 console.log(e);
             }
@@ -90,6 +91,7 @@ $(document).ready(function () {
         $.ajax({
             url: baseLink,
             success: removeFunction,
+            xhrFields: { withCredentials: true },
             error: function (e) {
                 console.log(e);
             }
@@ -107,6 +109,7 @@ $(document).ready(function () {
                 url: baseLink + id,
                 type: 'DELETE',
                 success: searchFunction,
+                xhrFields: { withCredentials: true },
                 error: function (e) {
                     console.log(e);
                 }

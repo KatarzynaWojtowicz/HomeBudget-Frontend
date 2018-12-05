@@ -12,6 +12,7 @@ function fill(profit) {
 $.ajax({
     url: baseLink,
     success: fill,
+    xhrFields: { withCredentials: true },
     error: function (e) {
         console.log(e);
     }
@@ -31,6 +32,7 @@ function saveFunction() {
         data: saveFunctionJson,
         contentType: "application/json",
         success: function () { window.location.pathname = "profit/profit.html" },
+        xhrFields: { withCredentials: true },
         error: function (e) {
             $('#edit-profit-error-alert').show();
             console.log(e);

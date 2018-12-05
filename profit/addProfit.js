@@ -13,6 +13,7 @@ function addFunction() {
         data: addFunctionJson,
         contentType: "application/json",
         success: profitAddedFunction,
+        xhrFields: { withCredentials: true },
         error: function (e) {
             $('#new-profit-error-alert').show();
             console.log(e);
