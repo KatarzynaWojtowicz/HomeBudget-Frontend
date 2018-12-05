@@ -15,6 +15,10 @@ body {
     color: #565264;
     align-content: center;
     text-align: center;
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
 }
 
 #title {
@@ -29,13 +33,11 @@ body {
 #footer {
     background-color: #777777;
     text-align: center;
-    clear: both;
-    position: absolute;
     z-index: 10;
-    height: 3em;
-    margin-top: -3em;
-    bottom: 0%;
-    min-width: 100%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 #footer-text {
@@ -66,7 +68,6 @@ button:not(.navbar-toggler) {
     transition: all 0.2s;
     color: white !important;
     width: 120px;
-    height: 40px;
     border: 1px solid #999;
 }
 
