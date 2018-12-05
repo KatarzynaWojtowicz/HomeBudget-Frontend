@@ -1,6 +1,5 @@
 var table;
 
-
 $(document).ready(function () {
     table = $('#expenses-table').DataTable({
         searching: false,
@@ -31,6 +30,10 @@ $(document).ready(function () {
         }
     });
 
+    $("#datepicker").datepicker({
+        showAnim: "slideDown",
+        dateFormat: "dd.mm.yy"
+    });
 
 
     function clearFunction() {
@@ -55,6 +58,7 @@ $(document).ready(function () {
         var statusParametr = $('#status-select').val();
         var kategoriaParametr = $('#kategoria-input').val();
         var nazwaParametr = $('#nazwa-input').val();
+        var dataParametr = $('#datepicker').val();
 
         if (statusParametr) {
             whereParts.push("status=" + statusParametr);
@@ -66,6 +70,10 @@ $(document).ready(function () {
 
         if (nazwaParametr) {
             whereParts.push("nazwa=" + nazwaParametr);
+        }
+
+        if (dataParametr) {
+            whereParts.push("data-wydatku=" + dataParametr);
         }
 
         if (whereParts.length > 0) {
@@ -84,12 +92,11 @@ $(document).ready(function () {
     }
 
     function clearInputSearchFunction() {
-        var clearKategoriaInput = $('#kategoria-input');
-        var clearNazwaInput = $('#nazwa-input');
-        var clearStatusSelect = $('#status-select');
-        clearKategoriaInput.val("");
-        clearNazwaInput.val("");
-        clearStatusSelect.val("");
+        $('#kategoria-input').val("");
+        $('#nazwa-input').val("");
+        $('#status-select').val("");
+        $('#status-select').val("");
+        $('#datepicker').val("");
     }
 
 
@@ -113,7 +120,7 @@ $(document).ready(function () {
 
 
     $('#search-button').click(searchFunction);
-    $('#clear-button').click(clearFunction);
+    $('#clear-button').click(clearInputSearchFunction);
     searchFunction();
 
     $('#expense-error-alert-close').click(function () {

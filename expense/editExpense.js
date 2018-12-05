@@ -9,14 +9,21 @@ function fill(expense) {
     $('#nowy-wydatek-kategoria-input').val(expense.kategoria);
     $('#nowy-wydatek-cena-input').val(expense.cena);
     $('#status-select').val(expense.status);
+   
 }
 
 $.ajax({
     url: baseLink,
     success: fill,
+    xhrFields: { withCredentials: true },
     error: function (e) {
         console.log(e);
     }
+});
+
+$("#datepicker").datepicker({
+    showAnim: "slideDown",
+    dateFormat: "dd.mm.yy"
 });
 
 function saveFunction() {
@@ -35,6 +42,7 @@ function saveFunction() {
         data: saveFunctionJson,
         contentType: "application/json",
         success: function () { window.location.pathname = "expense/expense.html" },
+        xhrFields: { withCredentials: true },
         error: function (e) {
             $('#edit-expense-error-alert').show();
             console.log(e);
