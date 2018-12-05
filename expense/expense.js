@@ -95,10 +95,8 @@ $(document).ready(function () {
         $('#kategoria-input').val("");
         $('#nazwa-input').val("");
         $('#status-select').val("");
-        $('#status-select').val("");
         $('#datepicker').val("");
     }
-
 
     $('#delete-button').click(function () {
         var baseLink = "http://localhost:8080/expense/delete/";
@@ -111,6 +109,7 @@ $(document).ready(function () {
                 url: baseLink + id,
                 type: 'DELETE',
                 success: searchFunction,
+                xhrFields: { withCredentials: true },
                 error: function (e) {
                     console.log(e);
                 }
