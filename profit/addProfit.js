@@ -3,7 +3,8 @@ function addFunction() {
     var baseLink = "http://localhost:8080/profit/add";
     var nazwaParametr = $('#nowy-przychod-nazwa-input').val();
     var kwotaParametr = $('#nowy-przychod-kwota-input').val();
-    var addFunctionJson = '{"nazwa":"' + nazwaParametr + '","kwota":' + kwotaParametr + '}';
+    var dataPrzychoduParametr = $('#datepicker').val();
+    var addFunctionJson = '{"nazwa":"' + nazwaParametr + '","kwota":' + kwotaParametr + ',"dataPrzychodu":"' + dataPrzychoduParametr + '"}';
 
     console.log(addFunctionJson);
 
@@ -18,16 +19,15 @@ function addFunction() {
             $('#new-profit-error-alert').show();
             console.log(e);
         }
-
     })
 }
 
 
 function profitAddedFunction() {
-    var clearNazwa = $('#nowy-przychod-nazwa-input');
-    var clearKwota = $('#nowy-przychod-kwota-input');
-    clearNazwa.val("");
-    clearKwota.val("");
+    $('#nowy-przychod-nazwa-input').val("");
+    $('#nowy-przychod-kwota-input').val("");
+    $('#datepicker').val("");
+
     $('#new-profit-alert').show();
 }
 
@@ -40,3 +40,8 @@ $('#new-profit-alert-close').click(function () {
 $('#new-profit-error-alert-close').click(() => {
     $('#new-profit-error-alert').hide();
 })
+
+$("#datepicker").datepicker({
+    showAnim: "slideDown",
+    dateFormat: "dd.mm.yy"
+});

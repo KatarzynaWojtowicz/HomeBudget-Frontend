@@ -45,17 +45,25 @@ $(document).ready(function () {
         }
     });
 
-
+    $("#datepicker").datepicker({
+        showAnim: "slideDown",
+        dateFormat: "dd.mm.yy"
+    });
 
 
     function searchFunction() {
         var baseLink = "http://localhost:8080/profit/search";
         var whereParts = [];
         var nazwaParametr = $('#nazwa-input').val();
+        var dataParametr = $('#datepicker').val();
 
 
         if (nazwaParametr) {
             whereParts.push("nazwa=" + nazwaParametr);
+        }
+
+        if (dataParametr) {
+            whereParts.push("data-przychodu=" + dataParametr);
         }
 
         if (whereParts.length > 0) {
@@ -73,8 +81,8 @@ $(document).ready(function () {
     }
 
     function clearInputSearchFunction() {
-        var clearNazwaInput = $('#nazwa-input');
-        clearNazwaInput.val("");
+        $('#nazwa-input').val("");
+        $('#datepicker').val("");
     }
 
     function removeProfitFunction() {
@@ -96,6 +104,11 @@ $(document).ready(function () {
                 console.log(e);
             }
         });
+    }
+
+    function clearInputSearchFunction() {
+        $('#nazwa-input').val("");
+        $('#datepicker').val("");
     }
 
     $('#delete-button').click(function () {
@@ -121,6 +134,7 @@ $(document).ready(function () {
 
 
     $('#search-button').click(searchFunction);
+    $('#clear-button').click(clearInputSearchFunction);
     searchFunction()
 
     $('#profit-error-alert-close').click(() => {
