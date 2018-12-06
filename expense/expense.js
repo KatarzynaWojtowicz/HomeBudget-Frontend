@@ -37,7 +37,7 @@ $(document).ready(function () {
 
 
     function clearFunction() {
-        table.clear();
+        table.clear().draw();
     }
 
     function addExpensesToTableFunction(expenseList) {
