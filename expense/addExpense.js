@@ -6,7 +6,7 @@ function addFunction() {
     var cenaParametr = $('#nowy-wydatek-cena-input').val();
     var statusParametr = $('#status-select').val();
     var dataParametr = $('#datepicker').val();
-    var addFunctionJson = '{"nazwa":"' + nazwaParametr + '","kategoria":"' + kategoriaParametr + '","cena":' + cenaParametr + ',"status":"' + statusParametr +'","dataWydatku":"' + dataParametr  + '"}';
+    var addFunctionJson = '{"nazwa":"' + nazwaParametr + '","kategoria":"' + kategoriaParametr + '","cena":' + cenaParametr + ',"status":"' + statusParametr + '","dataWydatku":"' + dataParametr + '"}';
 
     $.ajax({
         type: "POST",
@@ -16,10 +16,14 @@ function addFunction() {
         success: clearFieldsAndShowAlert,
         xhrFields: { withCredentials: true },
         error: function (e) {
-            $('#new-expense-error-alert').show();
-            console.log(e);
+            if (e.status === 403 || e.status === 401) {
+                alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
+                window.location.pathname = "/signIn.html";
+            } else {
+                $('#new-expense-error-alert').show();
+                console.log(e);
+            }
         }
-
     })
 }
 

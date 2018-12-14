@@ -86,7 +86,12 @@ $(document).ready(function () {
             success: addExpensesToTableFunction,
             xhrFields: { withCredentials: true },
             error: function (e) {
-                console.log(e);
+                if (e.status === 403 || e.status === 401) {
+                    alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
+                    window.location.pathname = "/signIn.html";
+                } else {
+                    console.log(e);
+                }
             }
         });
     }
@@ -111,7 +116,12 @@ $(document).ready(function () {
                 success: searchFunction,
                 xhrFields: { withCredentials: true },
                 error: function (e) {
-                    console.log(e);
+                    if (e.status === 403 || e.status === 401) {
+                        alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
+                        window.location.pathname = "/signIn.html";
+                    } else {
+                        console.log(e);
+                    }
                 }
             });
         }

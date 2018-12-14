@@ -9,7 +9,7 @@ function fill(expense) {
     $('#nowy-wydatek-kategoria-input').val(expense.kategoria);
     $('#nowy-wydatek-cena-input').val(expense.cena);
     $('#status-select').val(expense.status);
-   
+
 }
 
 $.ajax({
@@ -17,7 +17,12 @@ $.ajax({
     success: fill,
     xhrFields: { withCredentials: true },
     error: function (e) {
-        console.log(e);
+        if (e.status === 403 || e.status === 401) {
+            alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
+            window.location.pathname = "/signIn.html";
+        } else {
+            console.log(e);
+        }
     }
 });
 
@@ -44,8 +49,13 @@ function saveFunction() {
         success: function () { window.location.pathname = "expense/expense.html" },
         xhrFields: { withCredentials: true },
         error: function (e) {
-            $('#edit-expense-error-alert').show();
-            console.log(e);
+            if (e.status === 403 || e.status === 401) {
+                alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
+                window.location.pathname = "/signIn.html";
+            } else {
+                $('#edit-expense-error-alert').show();
+                console.log(e);
+            }
         }
 
     })

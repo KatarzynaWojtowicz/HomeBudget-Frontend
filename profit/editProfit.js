@@ -14,7 +14,12 @@ $.ajax({
     success: fill,
     xhrFields: { withCredentials: true },
     error: function (e) {
-        console.log(e);
+        if (e.status === 403 || e.status === 401) {
+            alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
+            window.location.pathname = "/signIn.html";
+        } else {
+            console.log(e);
+        }
     }
 });
 
@@ -34,8 +39,13 @@ function saveFunction() {
         success: function () { window.location.pathname = "profit/profit.html" },
         xhrFields: { withCredentials: true },
         error: function (e) {
-            $('#edit-profit-error-alert').show();
-            console.log(e);
+            if (e.status === 403 || e.status === 401) {
+                alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
+                window.location.pathname = "/signIn.html";
+            } else {
+                $('#edit-profit-error-alert').show();
+                console.log(e);
+            }
         }
 
     })

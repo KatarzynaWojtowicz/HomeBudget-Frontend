@@ -16,8 +16,13 @@ function addFunction() {
         success: profitAddedFunction,
         xhrFields: { withCredentials: true },
         error: function (e) {
-            $('#new-profit-error-alert').show();
-            console.log(e);
+            if (e.status === 403 || e.status === 401) {
+                alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
+                window.location.pathname = "/signIn.html";
+            } else {
+                $('#new-profit-error-alert').show();
+                console.log(e);
+            }
         }
     })
 }
