@@ -7,6 +7,7 @@ function fill(profit) {
     $('#id-edit').val(profit.idprofit);
     $('#nowy-przychod-nazwa-input').val(profit.nazwa);
     $('#nowy-przychod-kwota-input').val(profit.kwota);
+    $('#datepicker').val(profit.dataPrzychodu);
 }
 
 $.ajax({
@@ -23,12 +24,18 @@ $.ajax({
     }
 });
 
+$("#datepicker").datepicker({
+    showAnim: "slideDown",
+    dateFormat: "dd.mm.yy"
+});
+
 function saveFunction() {
     var id = $('#id-edit').val();
     var newNazwa = $('#nowy-przychod-nazwa-input').val();
     var newKwota = $('#nowy-przychod-kwota-input').val();
+    var newDate = $('#datepicker').val();
     var baseLink = "http://localhost:8080/profit/edit/" + id;
-    var saveFunctionJson = '{"idprofit":"' + id + '","nazwa":"' + newNazwa + '","kwota":' + newKwota + '}';
+    var saveFunctionJson = '{"idprofit":"' + id + '","nazwa":"' + newNazwa + '","kwota":' + newKwota + ',"dataPrzychodu":"' + newDate + '"}';
     console.log(saveFunctionJson);
 
     $.ajax({

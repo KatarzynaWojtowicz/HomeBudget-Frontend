@@ -16,7 +16,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 
     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" type="text/css" />
 
@@ -28,8 +28,10 @@
 
 <body>
     <div id="start-page">
-        <div id="top-text">
-            <a href="expense.html">HomeBudget</a>
+        <div class="col col-lg- text-center">
+            <a href="expense.html">
+                <img id="logo" src="../img/hb_logo_full_alt.png" alt="logo">
+            </a>
         </div>
     </div>
     <div class="container">
@@ -174,7 +176,6 @@
                     </div>
                     <div class="col-lg-8">
                         <select id="status-select">
-                            <option value="">Wszystkie</option>
                             <option value="WYKONANY">Wykonany</option>
                             <option value="ZAPLANOWANY">Zaplanowany</option>
                         </select>

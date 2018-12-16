@@ -9,7 +9,7 @@ function fill(expense) {
     $('#nowy-wydatek-kategoria-input').val(expense.kategoria);
     $('#nowy-wydatek-cena-input').val(expense.cena);
     $('#status-select').val(expense.status);
-
+    $('#datepicker').val(expense.dataWydatku);
 }
 
 $.ajax({
@@ -37,8 +37,9 @@ function saveFunction() {
     var newKategoria = $('#nowy-wydatek-kategoria-input').val();
     var newCena = $('#nowy-wydatek-cena-input').val();
     var newStatus = $('#status-select').val();
+    var newDate =  $('#datepicker').val();
     var baseLink = "http://localhost:8080/expense/edit/" + id;
-    var saveFunctionJson = '{"id":"' + id + '","nazwa":"' + newNazwa + '","kategoria":"' + newKategoria + '","cena":' + newCena + ',"status":"' + newStatus + '"}';
+    var saveFunctionJson = '{"id":"' + id + '","nazwa":"' + newNazwa + '","kategoria":"' + newKategoria + '","cena":' + newCena + ',"status":"' + newStatus + '","dataWydatku":"' + newDate + '"}';
     console.log(saveFunctionJson);
 
     $.ajax({

@@ -2,12 +2,17 @@ input {
     width: 100% !important;
 }
 
+#logo {
+    height: 100px;
+    margin-top: 10px;
+}
+
 .row {
     margin-top: 10px;
 }
 
 .container {
-    padding-bottom: 4rem;
+    /* padding-bottom: 4rem; */
 }
 
 body {
@@ -19,6 +24,8 @@ body {
     margin: 0;
     padding-bottom: 6rem;
     min-height: 100%;
+    position: absolute;
+    width: 100%;
 }
 
 #title {
