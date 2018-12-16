@@ -11,12 +11,10 @@
 
 #logo {
   width: 70%;
-
 }
 
 #logo-table{
-  width: 600px;
-  height: 400px;
+  width: 100%;
   border-style: groove;
 }
 

@@ -6,7 +6,7 @@ function getRandomRGB() {
 }
 
 $.ajax({
-    url: "http://localhost:8080/summary/monthly",
+    url: "http://localhost:8080/api/summary/monthly",
     success: function (results) {
         createMonthlySummaryData(results);
         createMonthlyComparisonData(results);
@@ -22,6 +22,13 @@ $.ajax({
     }
 });
 function createMonthlySummaryData(monhtlySummaryList) {
+    monhtlySummaryList.sort((a, b) => { // sort by monthName
+        if (a.monthName > b.monthName) {
+            return 1;
+        }
+        return -1;
+    });
+
     var monthlySummaryData = [];
 
     for (var i = 0; i < monhtlySummaryList.length; i++) {

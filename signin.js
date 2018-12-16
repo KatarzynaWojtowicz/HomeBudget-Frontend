@@ -1,39 +1,30 @@
 function loginFunction() {
     var loginParametr = $('#inputLogin').val();
     var passwordParametr = $('#inputPassword').val();
-    var baseLink = "http://localhost:8080/user/login";
-    var loginFunctionJson = "usernname=" + loginParametr + "&password=" + passwordParametr + "&submit=Login";
-    console.log(loginFunctionJson);
+    var baseLink = "http://localhost:8080/public/login";
+    var loginData = "username=" + loginParametr + "&password=" + passwordParametr;
 
     $.ajax({
         type: "POST",
         url: baseLink,
-        data: loginFunctionJson,
-        contentType: "application/x-www-form-urlencoded",
+        data: loginData,
         success: loginUserFunction,
+        xhrFields: { withCredentials: true },
         error: function (e) {
             $('#login-error-alert').show();
             console.log(e);
         }
-
-    })
+    });
 }
 
 function loginUserFunction() {
-    var clearLogin = $('#inputLogin');
-    var clearPassword = $('#inputPassword');
-
-    clearLogin.val("");
-    clearPassword.val("");
-
-    $('#login-alert').show();
+    window.location.pathname = "/expense/expense.html";
 }
 
 
 $('#signin').click(function () {
     loginFunction();
 })
-
 
 $('#required-fields-error-alert-close').click(function () {
     $('#required-fields-error-alert').hide();

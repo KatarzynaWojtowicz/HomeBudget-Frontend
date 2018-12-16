@@ -52,7 +52,7 @@ $(document).ready(function () {
 
 
     function searchFunction() {
-        var baseLink = "http://localhost:8080/profit/search";
+        var baseLink = "http://localhost:8080/api/profit/search";
         var whereParts = [];
         var nazwaParametr = $('#nazwa-input').val();
         var dataParametr = $('#datepicker').val();
@@ -90,39 +90,13 @@ $(document).ready(function () {
         $('#datepicker').val("");
     }
 
-    function removeProfitFunction() {
-        var baseLink = "http://localhost:8080/profit/delete";
-        var idParametr = $('#').val();
-        var whereParts = [];
-
-        if (idParametr) {
-            whereParts.push("/" + idParametr);
-        }
-
-        console.log(baseLink);
-
-        $.ajax({
-            url: baseLink,
-            success: removeFunction,
-            xhrFields: { withCredentials: true },
-            error: function (e) {
-                if (e.status === 403 || e.status === 401) {
-                    alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
-                    window.location.pathname = "/signIn.html";
-                } else {
-                    console.log(e);
-                }
-            }
-        });
-    }
-
     function clearInputSearchFunction() {
         $('#nazwa-input').val("");
         $('#datepicker').val("");
     }
 
     $('#delete-button').click(function () {
-        var baseLink = "http://localhost:8080/profit/delete/";
+        var baseLink = "http://localhost:8080/api/profit/delete/";
         var selectedRow = table.rows('.selected').data()[0];
         if (selectedRow === undefined) {
             $('#profit-error-alert').show();

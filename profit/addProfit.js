@@ -1,6 +1,6 @@
 function addFunction() {
 
-    var baseLink = "http://localhost:8080/profit/add";
+    var baseLink = "http://localhost:8080/api/profit/add";
     var nazwaParametr = $('#nowy-przychod-nazwa-input').val();
     var kwotaParametr = $('#nowy-przychod-kwota-input').val();
     var dataPrzychoduParametr = $('#datepicker').val();

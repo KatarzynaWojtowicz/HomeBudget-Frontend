@@ -1,7 +1,7 @@
 var url = window.location.href;
 var arrayUrl = url.split("?id=");
 var id = arrayUrl[1];
-var baseLink = "http://localhost:8080/profit/details/" + id;
+var baseLink = "http://localhost:8080/api/profit/details/" + id;
 
 function fill(profit) {
     $('#id-edit').val(profit.idprofit);
@@ -34,7 +34,7 @@ function saveFunction() {
     var newNazwa = $('#nowy-przychod-nazwa-input').val();
     var newKwota = $('#nowy-przychod-kwota-input').val();
     var newDate = $('#datepicker').val();
-    var baseLink = "http://localhost:8080/profit/edit/" + id;
+    var baseLink = "http://localhost:8080/api/profit/edit/" + id;
     var saveFunctionJson = '{"idprofit":"' + id + '","nazwa":"' + newNazwa + '","kwota":' + newKwota + ',"dataPrzychodu":"' + newDate + '"}';
     console.log(saveFunctionJson);
 

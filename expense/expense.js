@@ -53,7 +53,7 @@ $(document).ready(function () {
     }
 
     function searchFunction() {
-        var baseLink = "http://localhost:8080/expense/search";
+        var baseLink = "http://localhost:8080/api/expense/search";
         var whereParts = [];
         var statusParametr = $('#status-select').val();
         var kategoriaParametr = $('#kategoria-input').val();
@@ -104,7 +104,7 @@ $(document).ready(function () {
     }
 
     $('#delete-button').click(function () {
-        var baseLink = "http://localhost:8080/expense/delete/";
+        var baseLink = "http://localhost:8080/api/expense/delete/";
         var selectedRow = table.rows('.selected').data()[0];
         if (selectedRow === undefined) {
             $('#expense-error-alert').show();
