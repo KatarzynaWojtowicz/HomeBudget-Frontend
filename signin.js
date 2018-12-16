@@ -21,6 +21,19 @@ function loginUserFunction() {
     window.location.pathname = "/expense/expense.html";
 }
 
+function logout(){
+    $.ajax({
+        type: 'GET',
+        url: "http://localhost:8080/public/logout",
+        xhrFields: { withCredentials: true },
+        success: () => {},
+        error: (e) => console.log(e) 
+    });
+}
+
+$(document).ready(function () {
+    logout();
+});
 
 $('#signin').click(function () {
     loginFunction();
