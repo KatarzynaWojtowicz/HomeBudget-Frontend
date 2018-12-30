@@ -52,15 +52,6 @@ $(document).ready(function () {
         clearInputSearchFunction();
     }
 
-    function handleError(e) {
-        if (e.status === 403 || e.status === 401) {
-            alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
-            window.location.pathname = "/signIn.html";
-        } else {
-            console.log(e);
-        }
-    }
-
     function buildUrl() {
         var baseLink = HOSTNAME + "api/expense/search";
 

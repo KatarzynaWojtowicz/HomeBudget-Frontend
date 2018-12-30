@@ -16,14 +16,7 @@ $.ajax({
     url: baseLink,
     success: fill,
     xhrFields: { withCredentials: true },
-    error: function (e) {
-        if (e.status === 403 || e.status === 401) {
-            alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
-            window.location.pathname = "/signIn.html";
-        } else {
-            console.log(e);
-        }
-    }
+    error: handleError
 });
 
 $("#datepicker").datepicker({
@@ -46,19 +39,10 @@ function saveFunction() {
         type: "PUT",
         url: baseLink,
         data: saveFunctionJson,
-        contentType: "application/json",
+        headers: { 'Content-Type': 'application/json' },
         success: function () { window.location.pathname = "expense/expense.html" },
         xhrFields: { withCredentials: true },
-        error: function (e) {
-            if (e.status === 403 || e.status === 401) {
-                alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
-                window.location.pathname = "/signIn.html";
-            } else {
-                $('#edit-expense-error-alert').show();
-                console.log(e);
-            }
-        }
-
+        error: (e) => handleErrorWithAlert(e, '#edit-expense-error-alert')
     })
 }
 

@@ -1,13 +1,3 @@
-function handleError(e) {
-    if (e.status === 403 || e.status === 401) {
-        alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
-        window.location.pathname = "/signIn.html";
-    } else {
-        $('#new-profit-error-alert').show();
-        console.log(e);
-    }
-}
-
 function addFunction() {
     var baseLink = HOSTNAME + "api/profit/add";
 
@@ -23,7 +13,7 @@ function addFunction() {
         contentType: "application/json",
         success: profitAddedFunction,
         xhrFields: { withCredentials: true },
-        error: handleError
+        error: (e) => handleErrorWithAlert(e, '#new-profit-error-alert')
     })
 }
 

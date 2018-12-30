@@ -22,26 +22,6 @@ $("#datepicker").datepicker({
     dateFormat: "dd.mm.yy"
 });
 
-function handleError(e) {
-    if (e.status === 403 || e.status === 401) {
-        alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
-        window.location.pathname = "/signIn.html";
-    } else {
-        console.log(e);
-    }
-}
-
-function handlePutError(e) {
-    if (e.status === 403 || e.status === 401) {
-        alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
-        window.location.pathname = "/signIn.html";
-    }
-    else {
-        $('#edit-profit-error-alert').show();
-        console.log(e);
-    }
-}
-
 function saveFunction() {
     var id = $('#id-edit').val();
     var newNazwa = $('#nowy-przychod-nazwa-input').val();
@@ -57,7 +37,7 @@ function saveFunction() {
         contentType: "application/json",
         success: function () { window.location.pathname = "profit/profit.html" },
         xhrFields: { withCredentials: true },
-        error: handlePutError
+        error: (e) => handleErrorWithAlert(e, '#edit-profit-error-alert')
     })
 }
 
