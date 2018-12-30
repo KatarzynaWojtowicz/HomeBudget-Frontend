@@ -1,7 +1,7 @@
 function loginFunction() {
     var loginParametr = $('#inputLogin').val();
     var passwordParametr = $('#inputPassword').val();
-    var baseLink = "http://localhost:8080/public/login";
+    var baseLink = HOSTNAME + "public/login";
     var loginData = "username=" + loginParametr + "&password=" + passwordParametr;
 
     $.ajax({
@@ -24,7 +24,7 @@ function loginUserFunction() {
 function logout(){
     $.ajax({
         type: 'GET',
-        url: "http://localhost:8080/public/logout",
+        url: HOSTNAME + "public/logout",
         xhrFields: { withCredentials: true },
         success: () => {},
         error: (e) => console.log(e) 

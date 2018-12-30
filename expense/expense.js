@@ -52,8 +52,18 @@ $(document).ready(function () {
         clearInputSearchFunction();
     }
 
-    function searchFunction() {
-        var baseLink = "http://localhost:8080/api/expense/search";
+    function handleError(e) {
+        if (e.status === 403 || e.status === 401) {
+            alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
+            window.location.pathname = "/signIn.html";
+        } else {
+            console.log(e);
+        }
+    }
+
+    function buildUrl() {
+        var baseLink = HOSTNAME + "api/expense/search";
+
         var whereParts = [];
         var statusParametr = $('#status-select').val();
         var kategoriaParametr = $('#kategoria-input').val();
@@ -63,36 +73,28 @@ $(document).ready(function () {
         if (statusParametr) {
             whereParts.push("status=" + statusParametr);
         }
-
         if (kategoriaParametr) {
             whereParts.push("kategoria=" + kategoriaParametr);
         }
-
         if (nazwaParametr) {
             whereParts.push("nazwa=" + nazwaParametr);
         }
-
         if (dataParametr) {
             whereParts.push("data-wydatku=" + dataParametr);
         }
-
         if (whereParts.length > 0) {
             baseLink += "?" + whereParts.join('&');
         }
-        console.log(baseLink);
+        return baseLink;
+    }
 
+    function searchFunction() {
+        var url = buildUrl();
         $.ajax({
-            url: baseLink,
+            url: url,
             success: addExpensesToTableFunction,
             xhrFields: { withCredentials: true },
-            error: function (e) {
-                if (e.status === 403 || e.status === 401) {
-                    alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
-                    window.location.pathname = "/signIn.html";
-                } else {
-                    console.log(e);
-                }
-            }
+            error: handleError
         });
     }
 
@@ -104,7 +106,7 @@ $(document).ready(function () {
     }
 
     $('#delete-button').click(function () {
-        var baseLink = "http://localhost:8080/api/expense/delete/";
+        var baseLink = HOSTNAME + "api/expense/delete/";
         var selectedRow = table.rows('.selected').data()[0];
         if (selectedRow === undefined) {
             $('#expense-error-alert').show();
@@ -115,18 +117,10 @@ $(document).ready(function () {
                 type: 'DELETE',
                 success: searchFunction,
                 xhrFields: { withCredentials: true },
-                error: function (e) {
-                    if (e.status === 403 || e.status === 401) {
-                        alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
-                        window.location.pathname = "/signIn.html";
-                    } else {
-                        console.log(e);
-                    }
-                }
+                error: handleError
             });
         }
     });
-
 
     $('#search-button').click(searchFunction);
     $('#clear-button').click(clearInputSearchFunction);

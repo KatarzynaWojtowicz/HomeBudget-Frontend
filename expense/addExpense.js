@@ -1,5 +1,5 @@
 function addFunction() {
-    var baseLink = "http://localhost:8080/api/expense/add";
+    var baseLink = HOSTNAME + "api/expense/add";
 
     var nazwaParametr = $('#nowy-wydatek-nazwa-input').val();
     var kategoriaParametr = $('#nowy-wydatek-kategoria-input').val();

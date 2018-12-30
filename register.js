@@ -1,5 +1,4 @@
 function addFunction() {
-    var baseLink = "http://localhost:8080/public/user";
     var registerObject = {
         name: $('#name').val(),
         lastName: $('#lastName').val(),
@@ -7,11 +6,11 @@ function addFunction() {
         password: $('#password').val(),
         email: $('#email').val()
     };
-    
+
     var jsonString = JSON.stringify(registerObject);
     $.ajax({
         type: "POST",
-        url: baseLink,
+        url: HOSTNAME + "public/user",
         data: jsonString,
         contentType: "application/json",
         success: userAddedFunction,
@@ -19,23 +18,16 @@ function addFunction() {
             $('#new-user-error-alert').show();
             console.log(e);
         }
-
     })
 }
 
 function userAddedFunction() {
-    var clearImie = $('#name');
-    var clearNazwisko = $('#lastName');
-    var clearLogin = $('#login');
-    var clearHasloParametr = $('#password');
-    var clearPowtorzHasloParametr = $('#password-confirm');
-    var clearEmailParametr = $('#email');
-    clearImie.val("");
-    clearNazwisko.val("");
-    clearLogin.val("");
-    clearHasloParametr.val("");
-    clearPowtorzHasloParametr.val("");
-    clearEmailParametr.val("");
+    $('#name').val("");
+    $('#lastName').val("");
+    $('#login').val("");
+    $('#password').val("");
+    $('#password-confirm').val("");
+    $('#email').val("");
     $('#new-user-alert').show();
 }
 
@@ -46,20 +38,35 @@ $('#register').click(function () {
     var emailParametr = $('#email').val();
     var hasloParametr = $('#password').val();
     var powtorzHasloParametr = $('#password-confirm').val();
-    console.log(imieParametr + " " + nazwiskoParametr + " " + loginParametr + " " + emailParametr + " " + hasloParametr + " " + powtorzHasloParametr);
 
-    if (imieParametr && nazwiskoParametr && loginParametr && emailParametr && hasloParametr && powtorzHasloParametr) {
-        if (hasloParametr === powtorzHasloParametr) {
-            addFunction();
-        }
-        else {
-            $('#bad-password-alert').show();
-        }
+    if (!isValid(imieParametr, nazwiskoParametr, loginParametr, emailParametr, hasloParametr, powtorzHasloParametr)) {
+        showInvalidFormError();
+        return;
     }
-    else {
-        $('#required-fields-error-alert').show();
+    
+    if (!passwordsAreEqual(hasloParametr, powtorzHasloParametr)) {
+        showPasswordNotMatchingError();
+        return;
     }
+
+    addFunction();
 });
+
+function isValid(imieParametr, nazwiskoParametr, loginParametr, emailParametr, hasloParametr, powtorzHasloParametr) {
+    return imieParametr && nazwiskoParametr && loginParametr && emailParametr && hasloParametr && powtorzHasloParametr;
+}
+
+function passwordsAreEqual(haslo, powtorzHaslo) {
+    return haslo === powtorzHaslo;
+}
+
+function showInvalidFormError() {
+    $('#required-fields-error-alert').show();
+}
+
+function showPasswordNotMatchingError() {
+    $('#bad-password-alert').show();
+}
 
 $('#new-user-alert-close').click(function () {
     $('#new-user-alert').hide();

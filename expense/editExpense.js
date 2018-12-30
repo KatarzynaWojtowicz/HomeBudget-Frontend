@@ -1,7 +1,7 @@
 var url = window.location.href;
 var arrayUrl = url.split("?id=");
 var id = arrayUrl[1];
-var baseLink = "http://localhost:8080/api/expense/details/" + id;
+var baseLink = HOSTNAME + "api/expense/details/" + id;
 
 function fill(expense) {
     $('#id-edit').val(expense.id);
@@ -38,7 +38,7 @@ function saveFunction() {
     var newCena = $('#nowy-wydatek-cena-input').val();
     var newStatus = $('#status-select').val();
     var newDate =  $('#datepicker').val();
-    var baseLink = "http://localhost:8080/api/expense/edit/" + id;
+    var baseLink = HOSTNAME + "api/expense/edit/" + id;
     var saveFunctionJson = '{"id":"' + id + '","nazwa":"' + newNazwa + '","kategoria":"' + newKategoria + '","cena":' + newCena + ',"status":"' + newStatus + '","dataWydatku":"' + newDate + '"}';
     console.log(saveFunctionJson);
 

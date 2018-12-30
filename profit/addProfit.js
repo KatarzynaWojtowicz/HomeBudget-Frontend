@@ -1,12 +1,20 @@
-function addFunction() {
+function handleError(e) {
+    if (e.status === 403 || e.status === 401) {
+        alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
+        window.location.pathname = "/signIn.html";
+    } else {
+        $('#new-profit-error-alert').show();
+        console.log(e);
+    }
+}
 
-    var baseLink = "http://localhost:8080/api/profit/add";
+function addFunction() {
+    var baseLink = HOSTNAME + "api/profit/add";
+
     var nazwaParametr = $('#nowy-przychod-nazwa-input').val();
     var kwotaParametr = $('#nowy-przychod-kwota-input').val();
     var dataPrzychoduParametr = $('#datepicker').val();
     var addFunctionJson = '{"nazwa":"' + nazwaParametr + '","kwota":' + kwotaParametr + ',"dataPrzychodu":"' + dataPrzychoduParametr + '"}';
-
-    console.log(addFunctionJson);
 
     $.ajax({
         type: "POST",
@@ -15,18 +23,9 @@ function addFunction() {
         contentType: "application/json",
         success: profitAddedFunction,
         xhrFields: { withCredentials: true },
-        error: function (e) {
-            if (e.status === 403 || e.status === 401) {
-                alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
-                window.location.pathname = "/signIn.html";
-            } else {
-                $('#new-profit-error-alert').show();
-                console.log(e);
-            }
-        }
+        error: handleError
     })
 }
-
 
 function profitAddedFunction() {
     $('#nowy-przychod-nazwa-input').val("");

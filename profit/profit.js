@@ -50,38 +50,41 @@ $(document).ready(function () {
         dateFormat: "dd.mm.yy"
     });
 
-
-    function searchFunction() {
-        var baseLink = "http://localhost:8080/api/profit/search";
+    function buildUrl() {
+        var baseLink = HOSTNAME + "api/profit/search";
         var whereParts = [];
         var nazwaParametr = $('#nazwa-input').val();
         var dataParametr = $('#datepicker').val();
-
-
         if (nazwaParametr) {
             whereParts.push("nazwa=" + nazwaParametr);
         }
-
         if (dataParametr) {
             whereParts.push("data-przychodu=" + dataParametr);
         }
-
         if (whereParts.length > 0) {
             baseLink += "?" + whereParts;
         }
+        return baseLink;
+    }
+
+    function handleError(e) {
+        if (e.status === 403 || e.status === 401) {
+            alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
+            window.location.pathname = "/signIn.html";
+        }
+        else {
+            console.log(e);
+        }
+    }
+
+    function searchFunction() {
+        var url = buildUrl();
 
         $.ajax({
-            url: baseLink,
+            url: url,
             success: addProfitToTableFunction,
             xhrFields: { withCredentials: true },
-            error: function (e) {
-                if (e.status === 403 || e.status === 401) {
-                    alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
-                    window.location.pathname = "/signIn.html";
-                } else {
-                    console.log(e);
-                }
-            }
+            error: handleError
         });
     }
 
@@ -96,29 +99,22 @@ $(document).ready(function () {
     }
 
     $('#delete-button').click(function () {
-        var baseLink = "http://localhost:8080/api/profit/delete/";
+        var baseLink = HOSTNAME + "api/profit/delete/";
+
         var selectedRow = table.rows('.selected').data()[0];
         if (selectedRow === undefined) {
             $('#profit-error-alert').show();
-        } else {
-            var id = selectedRow[0];
-            $.ajax({
-                url: baseLink + id,
-                type: 'DELETE',
-                success: searchFunction,
-                xhrFields: { withCredentials: true },
-                error: function (e) {
-                    if (e.status === 403 || e.status === 401) {
-                        alert("Musisz być zalogowany aby mieć dostęp do tej strony.");
-                        window.location.pathname = "/signIn.html";
-                    } else {
-                        console.log(e);
-                    }
-                }
-            });
+            return;
         }
 
-
+        var id = selectedRow[0];
+        $.ajax({
+            url: baseLink + id,
+            type: 'DELETE',
+            success: searchFunction,
+            xhrFields: { withCredentials: true },
+            error: handleError
+        });
     })
 
 
